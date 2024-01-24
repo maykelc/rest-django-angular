@@ -1,0 +1,142 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+
+      <div>
+        <button class="btn btn-success" (click)="toggleCreateForm()">Crear
+          Tarea</button>
+      </div>
+
+      <div>
+        <button class="btn btn-info" (click)="toggleTaskList()">Mostrar
+          Tareas</button>
+      </div>
+
+      <br>
+      <div class="card-body">
+        <section *ngIf="showTaskList && tasks.length > 0">
+          <br>
+          <div class="list-group">
+            <div *ngFor="let task of tasks"
+              class="list-group-item list-group-item-action"
+              (click)="getTask(task.id)">
+              {{ task.title }}
+            </div>
+            <br>
+          </div>
+          <br>
+        </section>
+<br>
+
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <section *ngIf="showCreateForm">
+        <div>
+          <h2 class="titles">Agregar tarea:</h2>
+          <form (submit)="createNewTask()">
+            <div class="form-group">
+              <label class="letra" for>Titulo Tarea: </label>
+              <input class="campos" name="title" type="text"
+                placeholder="Titulo" [(ngModel)]="newTask.title">
+              <br>
+            </div>
+            <div class="form-group">
+              <label class="letra" for>Descripcion: </label>
+              <input class="campos" name="description" type="text"
+                placeholder="Descripcion" [(ngModel)]="newTask.description">
+              <br>
+            </div>
+            <div class="form-group checkbox-group">
+              <label class="letra" for>Completado:</label>
+              <input class="campos" name="done" type="checkbox"
+                [(ngModel)]="newTask.done">
+              <br>
+            </div>
+            <button class="btn btn-outline-success" type="submit">Crear</button>
+          </form>
+        </div>
+
+        <br><br><br>
+      </section>
+
+      <div *ngIf="task" class="button-group">
+        <h3 class="titles">Detalles de la tarea</h3>
+        <p class="letra">Titulo de la tarea: {{ task.title }}</p>
+        <p class="letra">Descripcion: {{ task.description }}</p>
+        <p class="letra">Completo: {{ getTaskStatusLabel(task.done) }} </p>
+        <div>
+          <button class="btn btn-outline-warning" *ngIf="!isEditing"
+            (click)="editTask(task)">Modificar Tarea</button>
+        </div>
+        <div>
+          <button class="btn btn-outline-danger"
+            (click)="deleteTask(task)">Eliminar</button>
+        </div>
+
+        <br>
+      </div>
+
+      <section *ngIf="isEditing">
+        <h3 class="titles">Modificar Tarea</h3>
+        <form (submit)="updateTask()">
+          <div class="form-group">
+            <label class="letra" for="title">Titulo: </label>
+            <input class="campos" type="text" name="title"
+              [(ngModel)]="taskToEdit.title">
+            <br>
+          </div>
+
+          <div class="form-group">
+            <label class="letra" for>Descripcion: </label>
+            <input class="campos" type="text" name="description"
+              [(ngModel)]="taskToEdit.description">
+            <br>
+          </div>
+
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="doneCheckbox"
+              name="done" [(ngModel)]="taskToEdit.done">
+            <label class="form-check-label letra"
+              for="doneCheckbox">Completado</label>
+          </div>
+
+          <br>
+          <div>
+            <button type="submit" class="btn btn-outline-success">Guardar
+              Cambios</button>
+
+          </div>
+
+          <div>
+            <button class="btn btn-outline-danger" type="button"
+              (click)="cancelEdit()">Cancelar</button>
+          </div>
+          <br>
+        </form>
+      </section>
+      <p *ngIf="successMessages">{{ successMessages }}</p>
+
+      <!-- Lista de tareas incompletas -->
+      <div class="card-body">
+        <section *ngIf="incompleteTasks.length > 0">
+          <div class="list-group">
+            <h3 class="list-group titles ">Tareas Incompletas</h3>
+            <div *ngFor="let task of incompleteTasks" class="list-group-item list-group-item-action">
+              {{ task.title }}
+            </div>
+          </div>
+          <br><br><br>
+        </section>
+      </div>
+
+  </div>
+
+
+
+
+
+
+  </div>
+</div>

@@ -1,0 +1,31 @@
+.letra{
+   color: whitesmoke;
+   margin-right: 10px;
+}
+
+.titles{
+    color: yellowgreen;
+    margin-bottom: 20px;
+}
+
+.campos{
+    margin-top: 5px;
+}
+
+.form-group{
+margin-bottom: 10px;
+}
+.checkbox-group {
+    display: flex; /* Añade esta línea para que los elementos de la checkbox estén en línea */
+    align-items: center; /* Añade esta línea para centrar verticalmente los elementos de la checkbox */
+  }
+
+
+.button-group {
+    gap: 10px; /* Ajusta el valor según tu preferencia para el espacio entre los botones */
+    margin-top: 10px; /* Ajusta el margen superior entre los botones y los párrafos según tu preferencia */
+  }
+
+.btn{
+    margin-top: 10px;
+}

@@ -1,0 +1,38 @@
+/* src/styles.css */
+@import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
+
+
+body{
+    background: #20002c;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #cbb4d4, #20002c);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #cbb4d4, #20002c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    position: relative; /* Añade esta línea */
+
+    display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  background-size: cover;
+}
+
+nav{
+    background: #d53369;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #FC354C, #0ABFBC);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #FC354C, #0ABFBC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+}
+
+footer{
+    background: #FC354C;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #0ABFBC, #FC354C);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #0ABFBC, #FC354C); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+    position: fixed; /* Cambia a 'absolute' */
+    bottom: 0; /* Añade esta línea */
+    width: 100%; /* Añade esta línea para que el ancho sea del 100% */
+    color: white; /* Añade este estilo para que el texto sea legible */
+
+}
+

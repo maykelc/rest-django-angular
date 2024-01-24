@@ -1,0 +1,138 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div>
+                <button class="btn btn-success"
+                (click)="toggleCreateForm()">Crear Usuario</button>
+            </div>
+            <div>
+                <button class="btn btn-info" (click)="toggleUserList()">Mostrar
+                    Usuarios</button>
+            </div>
+            
+            <br>
+            <div class="card-body">
+                <section *ngIf="showUserList && users.length > 0">
+                    <br>
+                    <div class="list-group">
+                        <div *ngFor="let user of users"
+                            class="list-group-item list-group-item-action"
+                            (click)="getUser(user.id)">
+                            {{ user.name }} {{ user.last_name }}
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <br>
+        </div>
+
+        <div class="col-md-4">
+            <div class="car-body">
+                <br>
+                <section *ngIf="showCreateForm">
+                    <div>
+                        <h2 class="titles">Craer Nuevo Usuario</h2>
+                        <form (submit)="createNewUser()">
+                            <div class="form-group">
+                                <label class="letra"
+                                    for="firstName">Nombre:</label>
+                                <input class="campos" type="text" id="firstName"
+                                    name="name"
+                                    [(ngModel)]="newUser.name">
+                                <br>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="letra"
+                                    for="lastName">Apellido:</label>
+                                <input class="campos" type="text" id="lastName"
+                                    name="last_name"
+                                    [(ngModel)]="newUser.last_name">
+                                <br>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="letra" for="username">Nombre de
+                                    Usuario:</label>
+                                <input class="campos" type="text" id="username"
+                                    name="name_user"
+                                    [(ngModel)]="newUser.name_user">
+                                <br>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="letra" for="email">Email:</label>
+                                <input class="campos" type="email" id="email"
+                                    name="email"
+                                    [(ngModel)]="newUser.email"
+                                    autocomplete="current-password">
+                                <br>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="letra"
+                                    for="password">Contraseña:</label>
+                                <input class="campos" type="password"
+                                    id="password"
+                                    name="password"
+                                    [(ngModel)]="newUser.password"
+                                    autocomplete="current-password">
+                                <br>
+                            </div>
+
+                            <button class="btn btn-outline-success"
+                                type="submit">Crear Usuario</button>
+                        </form>
+                    </div>
+                    <br>
+                </section>
+
+                <br>
+                <div *ngIf="user" class="button-group">
+                    <h3 class="titles">Detalles del Usuario Seleccionado</h3>
+                    <p class="letra">Nombre: {{ user.name }}</p>
+                    <p class="letra">Email: {{ user.email }}</p>
+                    <div>
+                        <button *ngIf="!isEditing"
+                            (click)="editUser(user)"
+                            class="btn btn-outline-warning">Modificar</button>
+                    </div>
+                    <div>
+                        <button (click)="deleteUser(user)"
+                            class="btn btn-outline-danger">Eliminar</button>
+                    </div>
+
+                    
+
+                </div>
+                <br>
+                <section *ngIf="isEditing">
+                    <h3 class="titles">Modificar Usuario</h3>
+                    <form (submit)="updateUser()">
+                        <div class="form-group">
+                            <label for="editName">Nombre:</label>
+                            <input type="text" id="editName" name="name"
+                                [(ngModel)]="userToEdit.name" required>
+                        </div>
+
+                        <div>
+                            <button class="btn btn-outline-success" type="submit">Guardar Cambios</button>
+                        </div>
+
+                        <div>   
+                            <button class="btn btn-outline-danger" type="button"
+                            (click)="cancelEdit()">Cancelar</button>
+                        </div>
+                        
+                        
+                    </form>
+                </section>
+                <p *ngIf="successMessages">{{ successMessages }}</p>
+
+                <br><br><br><br>
+            </div>
+
+        </div>
+
+    </div>
+</div>
